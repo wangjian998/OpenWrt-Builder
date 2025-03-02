@@ -184,6 +184,25 @@ config_package_del luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
 config_package_del luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server
 ## daed
 config_package_add daed
+
+# 添加 eBPF 支持
+config_add DEVEL
+config_add KERNEL_DEBUG_INFO
+config_del KERNEL_DEBUG_INFO_REDUCED
+config_add KERNEL_DEBUG_INFO_BTF
+config_add KERNEL_CGROUPS
+config_add KERNEL_CGROUP_BPF
+config_add KERNEL_BPF_EVENTS
+config_add BPF_TOOLCHAIN_HOST
+config_add KERNEL_XDP_SOCKETS
+config_package_add kmod-xdp-sockets-diag
+
+# 添加依赖包
+config_package_add kmod-sched-core
+config_package_add kmod-sched-bpf
+config_package_add kmod-xdp-sockets-diag
+config_package_add kmod-veth
+
 # 镜像生成
 # 修改分区大小
 sed -i "/CONFIG_TARGET_KERNEL_PARTSIZE/d" .config
