@@ -182,9 +182,6 @@ config_package_del luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client
 config_package_del luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server
 config_package_del luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
 config_package_del luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server
-## daed
-config_package_add daed
-
 # 添加 eBPF 支持
 config_add DEVEL
 config_add KERNEL_DEBUG_INFO
@@ -202,7 +199,8 @@ config_package_add kmod-sched-core
 config_package_add kmod-sched-bpf
 config_package_add kmod-xdp-sockets-diag
 config_package_add kmod-veth
-
+## daed
+config_package_add daed
 # 镜像生成
 # 修改分区大小
 sed -i "/CONFIG_TARGET_KERNEL_PARTSIZE/d" .config
